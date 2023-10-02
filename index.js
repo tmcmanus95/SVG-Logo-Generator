@@ -2,10 +2,10 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const { Circle, Square, Triangle } = require("./lib/shapes");
 
-//Creates a SVG constructor
+// Creates a SVG constructor
 class Svg {
   constructor() {
-    //Initializes the text and shape content to an empty string
+    // Initializes the text and shape content to an empty string
     this.logoTextContent = "";
     this.logoShapeContent = "";
   }
@@ -19,8 +19,8 @@ class Svg {
   }
 
   //Text element
-  setLogoText(text) {
-    this.logoTextContent = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="white">${text}</text>`;
+  setLogoText(textColor, text) {
+    this.logoTextContent = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>`;
   }
 
   //Shape element
@@ -39,8 +39,13 @@ inquirer
     },
     {
       type: "input",
+      name: "textColor",
+      message: "Enter a color for your text:",
+    },
+    {
+      type: "input",
       name: "color",
-      message: "Enter a color",
+      message: "Enter a color for your shape",
     },
     {
       type: "list",
@@ -54,7 +59,7 @@ inquirer
     const svg = new Svg();
 
     //Sets the text of the logo to user input
-    svg.setLogoText(answer.text);
+    svg.setLogoText(answer.textColor, answer.text);
 
     //Checks the inputted shape using switch/case and sets the shape
     switch (answer.shape) {

@@ -14,7 +14,7 @@ To use this application, input "node index.js" once in the appriate working dire
 
 # Video Link
 
-https://drive.google.com/file/d/11XBA_M4hNicu5mDT4OwU6p9wsE14gTyg/view
+https://drive.google.com/file/d/1frxqLUs9pOQWKeaGdZEl4WWO7Nmm2_9H/view
 
 # License
 
