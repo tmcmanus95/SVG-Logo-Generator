@@ -10,19 +10,22 @@ class Svg {
     this.logoShapeContent = "";
   }
 
-  render() {
+  //function that creates the shape and text elements for the svg file.
+  create() {
     return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
       ${this.logoShapeContent}
       ${this.logoTextContent}
     </svg>`;
   }
 
+  //Text element
   setLogoText(text) {
     this.logoTextContent = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="white">${text}</text>`;
   }
 
+  //Shape element
   setLogoShape(shape) {
-    this.logoShapeContent = shape.render();
+    this.logoShapeContent = shape.create();
   }
 }
 
@@ -46,28 +49,28 @@ inquirer
       choices: ["Circle", "Triangle", "Square"],
     },
   ])
-  .then((answers) => {
+  .then((answer) => {
     //Inputs from the user are then saved in a new Svg instance.
     const svg = new Svg();
 
     //Sets the text of the logo to user input
-    svg.setLogoText(answers.text);
+    svg.setLogoText(answer.text);
 
     //Checks the inputted shape using switch/case and sets the shape
-    switch (answers.shape) {
+    switch (answer.shape) {
       case "Circle":
         const circle = new Circle();
-        circle.chooseColor(answers.color);
+        circle.chooseColor(answer.color);
         svg.setLogoShape(circle);
         break;
       case "Triangle":
         const triangle = new Triangle();
-        triangle.chooseColor(answers.color);
+        triangle.chooseColor(answer.color);
         svg.setLogoShape(triangle);
         break;
       case "Square":
         const square = new Square();
-        square.chooseColor(answers.color);
+        square.chooseColor(answer.color);
         svg.setLogoShape(square);
         break;
       default:
@@ -75,7 +78,7 @@ inquirer
         break;
     }
 
-    const logo = svg.render();
+    const logo = svg.create();
 
     // Saves the new SVG logo
     fs.writeFileSync("logo.svg", logo);
