@@ -14,6 +14,8 @@ To use this application, input "node index.js" once in the appriate working dire
 
 # Video Link
 
+https://drive.google.com/file/d/11XBA_M4hNicu5mDT4OwU6p9wsE14gTyg/view
+
 # License
 
 Copyright (c) 2023 Thomas McManus
